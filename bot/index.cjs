@@ -1,12 +1,13 @@
 require("dotenv").config();
 const TelegramBot = require("node-telegram-bot-api");
 
-// ✅ создаём бота сначала
+// Создаём бота
 const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
 
+// URL твоего мини-приложения
 const WEB_APP_URL = "https://spin-wheel-telegram.vercel.app";
 
-// ✅ потом используем bot:
+// Реакция на /start
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
 
@@ -16,7 +17,7 @@ bot.onText(/\/start/, (msg) => {
         [
           {
             text: "🎡 Играть",
-            web_app: { url: "https://spin-wheel-telegram.vercel.app" },
+            web_app: { url: WEB_APP_URL },
           },
         ],
       ],
